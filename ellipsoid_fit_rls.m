@@ -43,12 +43,12 @@ for i = 1:length(x)
     K = P*H'/(H*P*H'+R);
     r = 1 - H * v;
     v = v + K * r;
-    if max(abs((v - lastv)./v)) > 0.0485
+    if max(abs((v - lastv)./v)) > 0.017
         endcnt = 0;
         lastv = v;
     end
     endcnt = endcnt + 1;
-    if endcnt > 20                                                                          
+    if endcnt > 100                                                                          
         break;
     end
     vrec(:,j) = v;

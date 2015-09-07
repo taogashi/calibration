@@ -4,8 +4,8 @@
 clear;
 close all;
 
-data=textread('acc.txt');
-mag=data/1000;
+data=textread('mag_raw.TXT');
+mag=data;
 figure(1);
 hold off;
 plot3(mag(:,1),mag(:,2),mag(:,3), '*');
@@ -47,9 +47,9 @@ grid on;
 %
 corMag=mag-repmat(center',length(mag),1);
 % corMag=(evecs'*corMag')';
-corMag(:,1) = corMag(:,1)/radii(1)*9800;
-corMag(:,2) = corMag(:,2)/radii(2)*9800;
-corMag(:,3) = corMag(:,3)/radii(3)*9800;
+corMag(:,1) = corMag(:,1)/radii(1)*500;
+corMag(:,2) = corMag(:,2)/radii(2)*500;
+corMag(:,3) = corMag(:,3)/radii(3)*500;
 
 figure(3);
 plot3(corMag(:,1),corMag(:,2),corMag(:,3),'*');
@@ -84,5 +84,6 @@ grid on;
 subplot(2,2,4);
 hold on;
 plot(rec');
+title('convergency');
 % legend('residual');
 grid on;
